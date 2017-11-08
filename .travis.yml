@@ -8,6 +8,9 @@ env:
     # NPM_AUTH_TOKEN (CD need it to use npm private registry)
     # NPM_REGISTRY_URL
 
+install:
+  - echo ok
+
 script:
   - echo ok
 
