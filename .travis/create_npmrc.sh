@@ -25,3 +25,5 @@ cat > $npmrc_path <<EOF
 //$npm_registry_url:_authToken=$auth_token
 always-auth=true
 EOF
+
+echo "$(npm whoami --registry https://npm.cobli.co)"
