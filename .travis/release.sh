@@ -51,10 +51,6 @@ else
 fi
 
 # Configure git for pushing
-#git config --global user.email "admin@cobli.co"
-#git config --global user.name "Cobli CD"
-#git remote set-url --push origin "https://cobli-cd:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-#git checkout "$TRAVIS_BRANCH"
 
 # Install Deps
 [ -x venv ] || virtualenv venv
