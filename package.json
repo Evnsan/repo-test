@@ -1,6 +1,6 @@
 {
   "name": "@cobli/repo-test",
-  "version": "1.0.0-dev.0",
+  "version": "1.0.0-dev.1",
   "description": "repositorio para alguns testes de integração contínua",
   "main": "index.js",
   "scripts": {
