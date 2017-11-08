@@ -22,9 +22,13 @@ before_deploy:
 
 deploy:
   - provider: script
-    script: ".travis/release.sh"
+    script: ".travis/release.sh release"
     skip_cleanup: true
     on:
-      branch:
-        - dev
-        - master 
+      branch: master 
+
+  - provider: script
+    script: ".travis/release.sh dev"
+    skip_cleanup: true
+    on:
+      branch: dev

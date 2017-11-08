@@ -29,25 +29,16 @@ if git show --name-only --pretty='format:' HEAD | grep -qF .bumpversion.cfg; the
   exit 0
 fi
 
-if [ -z "$BUMPVERSION_DEV_PART" ]; then
-  bumpversion_dev_part="dev"
-  echo "Using bumpversion_dev_part default = $bumpversion_dev_part"
+if [ -z "$BUMPVERSION_PRERELEASE_PART" ]; then
+  bumpversion_prerelease_part="patch"
 else
-  bumpversion_dev_part=$BUMPVERSION_DEV_PART
+  bumpversion_prerelease_part=$BUMPVERSION_PRERELEASE_PART
 fi
 
-if [ -z "$BUMPVERSION_PATCH_PART" ]; then
-  bumpversion_patch_part="patch"
-  echo "Using bumpversion_patch_part default = $bumpversion_patch_part"
+if [ -z "$1" ]; then
+  bumpversion_part="patch"
 else
-  bumpversion_patch_part=$BUMPVERSION_PATCH_PART
-fi
-
-if [ -z "$BUMPVERSION_RELEASE" ]; then
-  bumpversion_release_part="release"
-  echo "Using bumpversion_release_part default = $bumpversion_release_part"
-else
-  bumpversion_release_part=$BUMPVERSION_RELEASE_PART
+  bumpversion_part=$1
 fi
 
 # Configure git for pushing
@@ -60,31 +51,27 @@ pip install "git+https://github.com/peritus/bumpversion.git" githubrelease semve
 # Fetch tags so bumpversion fails in case of duplicates
 git fetch --tags
 
-new_version=$(bumpversion -n --list $bumpversion_dev_part \
+new_version=$(bumpversion -n --list $bumpversion_part \
   | grep new_version \
   | sed -E 's/current_version\s*=\s*//')
 
 new_tag="v${new_version}"
 
 # If in master bump release and set dev to the next non-production version
+bumpversion $bumpversion_part \
+  --commit --tag --tag-name='v{new_version}' \
+  --message 'Release {new_version} [ci skip]'
+
 dev_push=
 if [[ "$TRAVIS_BRANCH" != dev ]] && git fetch origin dev:dev; then
-    bumpversion $bumpversion_release_part \
-      --commit --tag --tag-name='v{new_version}' \
-      --message 'Release {new_version} [ci skip]'
-
     git checkout dev
     git merge --ff-only "$TRAVIS_BRANCH"
-    bumpversion $bumpversion_patch_part \
+    bumpversion $bumpversion_prerelease_part \
         --commit --no-tag \
         --message 'Start dev version {new_version} [ci skip]'
     git checkout -
 
     dev_push=dev
-else
-    bumpversion $bumpversion_dev_part \
-      --commit --tag --tag-name='v{new_version}' \
-      --message 'Increase dev version {new_version} [ci skip]'
 fi
 
 echo git push --atomic origin "$TRAVIS_BRANCH" "$new_tag" $dev_push
