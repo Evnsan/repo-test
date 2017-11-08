@@ -28,7 +28,19 @@ deploy:
       branch: master 
 
   - provider: script
+    script: npm publish 
+    skip_cleanup: true
+    on:
+      branch: master
+
+  - provider: script
     script: ".travis/release.sh dev"
+    skip_cleanup: true
+    on:
+      branch: dev
+
+  - provider: script
+    script: npm publish --tag dev 
     skip_cleanup: true
     on:
       branch: dev
