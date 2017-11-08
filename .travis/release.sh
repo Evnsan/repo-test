@@ -74,7 +74,7 @@ if [[ "$TRAVIS_BRANCH" != dev ]] && git fetch origin dev:dev; then
     dev_push=dev
 fi
 
-echo git push --atomic origin "$TRAVIS_BRANCH" "$new_tag" $dev_push
+git push --atomic origin "$TRAVIS_BRANCH" "$new_tag" $dev_push
 
 # Make the Github releases
 gen_release_notes() {
@@ -94,6 +94,6 @@ gen_release_notes() {
     fi
 }
 
-echo githubrelease release "$TRAVIS_REPO_SLUG" create "$new_tag"
-echo githubrelease release "$TRAVIS_REPO_SLUG" edit "$new_tag" --body "$(gen_release_notes)"
-echo githubrelease release "$TRAVIS_REPO_SLUG" publish "$new_tag"
+githubrelease release "$TRAVIS_REPO_SLUG" create "$new_tag"
+githubrelease release "$TRAVIS_REPO_SLUG" edit "$new_tag" --body "$(gen_release_notes)"
+githubrelease release "$TRAVIS_REPO_SLUG" publish "$new_tag"
