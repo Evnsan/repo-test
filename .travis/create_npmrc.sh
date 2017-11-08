@@ -1,4 +1,5 @@
 #! /bin/bash
+set -x
 
 if [ -z "$NPM_AUTH_TOKEN" ]; then
   echo "Error: NPM_AUTH_TOKEN not set"
