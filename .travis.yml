@@ -20,8 +20,4 @@ deploy:
     skip_cleanup: true
     on:
       branch: dev
-
-  - provider: script
-    script: npm publish
-    on:
-      branch: dev
+      branch: master 
