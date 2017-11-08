@@ -60,7 +60,7 @@ pip install "git+https://github.com/peritus/bumpversion.git" githubrelease semve
 # Fetch tags so bumpversion fails in case of duplicates
 git fetch --tags
 
-new_version=$(bumpversion -n --list $bumpversion_master_part \
+new_version=$(bumpversion -n --list $bumpversion_dev_part \
   | grep new_version \
   | sed -E 's/current_version\s*=\s*//')
 

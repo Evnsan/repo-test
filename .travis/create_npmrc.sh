@@ -1,4 +1,5 @@
 #! /bin/bash
+set -x
 
 if [ -z "$NPM_AUTH_TOKEN" ]; then
   echo "Error: NPM_AUTH_TOKEN not set"
@@ -10,7 +11,7 @@ if [ -z "$NPM_REGISTRY_URL" ]; then
   exit 1;
 fi
 
-if [ -z "$NPM_REGISTRY_URL" ]; then
+if [ -z "$NPMRC" ]; then
   npmrc_path="$HOME/.npmrc"
 else
   npmrc_path="$HOME/$NPMRC"
@@ -25,3 +26,5 @@ cat > $npmrc_path <<EOF
 //$npm_registry_url:_authToken=$auth_token
 always-auth=true
 EOF
+
+echo "$(npm whoami --registry https://npm.cobli.co/registry/)"

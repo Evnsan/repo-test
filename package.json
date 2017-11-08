@@ -1,4 +1,22 @@
 {
-  "name": "@cobli/herbie-dashboard-maintenance",
+  "name": "@cobli/repo-test",
   "version": "1.0.0-dev.0",
+  "description": "repositorio para alguns testes de integração contínua",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evnsan/repo-test.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Evnsan/repo-test/issues"
+  },
+  "homepage": "https://github.com/Evnsan/repo-test#readme",
+  "dependencies": {
+    "@cobli/cobli-hello-world": "0.0.1"
+  }
 }
