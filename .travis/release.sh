@@ -42,6 +42,10 @@ else
 fi
 
 # Configure git for pushing
+git config --global user.email "vnsanc@gmail.com"
+git config --global user.name "Evnsan"
+git remote set-url --push origin "https://evnsan:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git checkout "$TRAVIS_BRANCH"
 
 # Install Deps
 [ -x venv ] || virtualenv venv
