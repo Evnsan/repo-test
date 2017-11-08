@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "6"
+
+env:
+  global:
+    # GITHUB_TOKEN (CD uses this to create releases)
+    # NPM_AUTH_TOKEN (CD need it to use npm private registry)
+    # NPM_REGISTRY_URL
+
+script:
+  - echo ok
+
+before_deploy:
+  - .travis/create_npmrc.sh
+
+deploy:
+  - provider: script
+    script: ".travis/release.sh"
+    skip_cleanup: true
+    on:
+      branch: dev
+
+  - provider: script
+    script: npm publish
+    on:
+      branch: dev
