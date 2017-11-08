@@ -10,7 +10,7 @@ if [ -z "$NPM_REGISTRY_URL" ]; then
   exit 1;
 fi
 
-if [ -z "$NPM_REGISTRY_URL" ]; then
+if [ -z "$NPMRC" ]; then
   npmrc_path="$HOME/.npmrc"
 else
   npmrc_path="$HOME/$NPMRC"
