@@ -53,7 +53,7 @@ git fetch --tags
 
 new_version=$(bumpversion -n --list $bumpversion_part \
   | grep new_version \
-  | sed -E 's/current_version\s*=\s*//')
+  | sed -E 's/new_version\s*=\s*//')
 
 new_tag="v${new_version}"
 
