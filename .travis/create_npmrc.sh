@@ -27,4 +27,4 @@ cat > $npmrc_path <<EOF
 always-auth=true
 EOF
 
-echo "$(npm whoami --registry https://npm.cobli.co)"
+echo "$(npm whoami --registry https://npm.cobli.co/registry/)"
