@@ -22,5 +22,6 @@ deploy:
     script: ".travis/release.sh"
     skip_cleanup: true
     on:
-      branch: dev
-      branch: master 
+      branch:
+        - dev
+        - master 
