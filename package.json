@@ -1,6 +1,6 @@
 {
   "name": "@cobli/cobli-hello-world-2",
-  "version": "1.0.8-dev.0",
+  "version": "1.0.8-dev.1",
   "description": "Just a test for cobli npm private registry",
   "main": "index.js",
   "scripts": {
