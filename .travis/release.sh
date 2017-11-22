@@ -50,7 +50,7 @@ git checkout "$TRAVIS_BRANCH"
 # Install Deps
 [ -x venv ] || virtualenv venv
 source venv/bin/activate
-pip install --user "git+https://github.com/peritus/bumpversion.git" githubrelease semver
+pip install "git+https://github.com/peritus/bumpversion.git" githubrelease semver
 
 # Fetch tags so bumpversion fails in case of duplicates
 git fetch --tags
