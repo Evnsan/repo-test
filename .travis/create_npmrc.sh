@@ -24,7 +24,6 @@ registry="https://$npm_registry_url"
 cat > $npmrc_path <<EOF
 @cobli:registry=$registry
 //$npm_registry_url:_authToken=$auth_token
-always-auth=true
 EOF
 
 echo "$(npm whoami --registry https://npm.cobli.co/registry/)"
